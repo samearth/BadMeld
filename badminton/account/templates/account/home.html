@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <style>
+            .hello-msg{
+                font-size: 50px;
+                color: rgb(18, 18, 19);
+                margin-right: 20px;
+
+            }
+        </style>
+        <h1>Welcome to IIITDM Jabalpur badminton club</h1>
+        <span class="hello-msg"> Hello,{{request.user}}</span>
+        <a href="{% url 'logouts' %}"> Logout</a>
+        <a href="{% url 'profile' %}"> profile PAGE</a>
+    </body>
+</html>
