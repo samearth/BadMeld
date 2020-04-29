@@ -7,11 +7,11 @@ from .models import *
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username' , 'email' , 'password1' , 'password2']
+        fields = ['id','username' , 'email' , 'password1' , 'password2']
 
 
 class profileform(ModelForm):
     class Meta:
         model= profile
-        fields = ['name' , 'roll' , 'phone']
+        fields = ['id','name' , 'roll' , 'phone']
 

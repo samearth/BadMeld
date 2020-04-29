@@ -21,10 +21,7 @@ def register(request):
             pform = profileform(request.POST)
             if form.is_valid() and pform.is_valid():
                 user = form.save()
-                profile_1=pform.save(commit=False)
-                profile_1.user = user
-
-                profile_1.save()
+                profile_1=pform.save()
                 username=form.cleaned_data.get('username')
                 messages.success(request, 'Account was created for '+ username)
                 return redirect('/login')
