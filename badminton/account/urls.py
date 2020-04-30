@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('register/', views.register),
-    path('login/', views.login),
-    path('',views.index),
-    path('home/',views.home),
+    path('register/', views.register , name='register'),
+    path('login/', views.login ,name='login'),
+    path('',views.index , name='index'),
+    path('home/',views.home , name='home'),
     path('logout/',views.logouts,name='logouts'),
-    path('profile/',views.profile,name='profile')
+    path('profile/',views.profile,name='profile'),
+    path('about/' , views.about , name='about')
 ]

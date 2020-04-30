@@ -1,13 +1,10 @@
-{% load static %}
-<html>
-    <body>
-        profile
-        
+{% extends 'account/base2.html' %}
+
+{% block content %}
+        Profile </br>
         <form method="POST" action="" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.as_p}}
-            
-            <input type="submit">
+            <input type="submit" class="btn btn-outline-warning btn-lg" role="button" value="UPDATE"> </a>
         </form>
-    </body>
-</html>
+{% endblock %}
