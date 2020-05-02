@@ -1,0 +1,32 @@
+{% extends "account/base2.html" %}
+
+{% block content %}
+
+<p>
+    INVENTORY
+</p>
+<style>
+table, th, td {
+    border: 1px solid black;
+  }
+</style>
+<div class="row">
+    <div class="col-sm-4 border dark"><b>Item</b></div>
+    <div class="col-sm-4 border dark"><b>Quantity</b></div></span>
+</div>
+{% for m in invent %}
+<div class="row">
+  <div class="col-sm-4 border">{{m.item}}</div>
+  <div class="col-sm-4 border">{{m.quantity}}</div>
+</div>
+{% endfor %}
+<br/>
+<br/>
+<b>Add an Item</b>
+<form method = "POST" action="">
+    {% csrf_token %}
+    Item : <input type="text" name="item">
+    Quantity: <input type="text" name="quantity"><br/></br>
+    <input type="submit" class="btn btn-outline-secondary btn-lg" name="add" value="Add">
+</form>
+{% endblock %}

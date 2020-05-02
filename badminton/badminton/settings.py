@@ -124,3 +124,12 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR , 'static')
 ]
 MEDIA_ROOT = os.path.join(BASE_DIR , 'static/images')
+
+
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ssamarth1201@gmail.com'
+EMAIL_HOST_PASSWORD='sama219akash'
+EMAIL_USE_TLS= True
+EMAIL_USE_SSL = False

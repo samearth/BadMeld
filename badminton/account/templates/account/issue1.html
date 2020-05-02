@@ -1,0 +1,26 @@
+{% extends "account/base2.html" %}
+
+{% block content %}
+<h1>
+    Issue an Item
+</h1>
+<p>
+    Select an Item From Below to Issue
+</p>
+<form  method="POST" action="" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% for f in options.Nums %}
+    <br/><br/> 
+            {{f}}
+    {% endfor %}
+    <br/><br/>
+  <input type="submit" class="btn btn-outline-secondary btn-lg" name="submit">
+</form>
+<div class="mx-auto"  style="width: 500px; size: 100px">
+    {% for m in messages %}
+    <h3 class="text-md-center text-{{m.tags}}" size="50"> {{m}}</h3> 
+    {% endfor %}
+</div>
+<hr>
+<hr>
+{% endblock %}

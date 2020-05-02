@@ -23,5 +23,10 @@ urlpatterns = [
     path('home/',views.home , name='home'),
     path('logout/',views.logouts,name='logouts'),
     path('profile/',views.profile,name='profile'),
-    path('about/' , views.about , name='about')
+    path('about/' , views.about , name='about'),
+    path('issue/' , views.add_inventory, name="issue"),
+    path('updatei',views.update_inventory, name="updatei"),
+    path('issue1/',views.issue , name="issue1"),
+    path('complaints/',views.complaints , name="complaints"),
+    path('blog/',views.blog , name="blog"),
 ]

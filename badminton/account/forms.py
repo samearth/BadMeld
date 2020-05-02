@@ -15,3 +15,29 @@ class profileform(ModelForm):
         model= profile
         fields = ['id','name' , 'roll' , 'phone']
 
+class inventoryform(ModelForm):
+    class Meta:
+        model=inventory
+        fields = ['item' , 'quantity']
+
+Nums=[
+    ('Racket' , 'Racket'),
+    ('Shoes','Shoes'),
+    ('Grips' ,'Grips'),
+    ('Shuttle' , 'Shuttle')
+]
+class issueform(forms.Form):
+    Nums=forms.CharField(widget=forms.RadioSelect(choices=Nums))
+
+
+class complaint_form(forms.Form):
+    Complaint = forms.CharField(widget=forms.Textarea(attrs={"rows":10, "cols":90}))
+    
+
+vote=[
+    ('Upvote', 'Upvote'),
+    ('Downvote','Downvote')
+]
+class vote_form(forms.Form):
+    vote=forms.CharField(widget=forms.RadioSelect(choices=Nums))
+    

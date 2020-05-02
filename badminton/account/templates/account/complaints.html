@@ -1,0 +1,20 @@
+{% extends "account/base2.html" %}
+
+{% block content %}
+
+<h1> Site Your Complaints Here </h1>
+<br/>
+<br/>
+<form  method="POST" action="" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{form.as_p}}
+  <input type="submit" class="btn btn-outline-secondary btn-lg" name="submit">
+</form>
+
+
+<div class="mx-auto"  style="width: 500px; size: 100px">
+    {% for m in messages %}
+    <h3 class="text-md-center text-{{m.tags}}" size="50"> {{m}}</h3> 
+    {% endfor %}
+</div>
+{% endblock %}
