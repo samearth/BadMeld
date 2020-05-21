@@ -75,15 +75,15 @@ def profile(request):
         if form.is_valid():
             form.save()
     obj, created = issue_item.objects.get_or_create(user=request.user)
-    issued_item=""
-    if created==True:
+    issued_item="No item issued"
+    if created is True:
         issued_item="No items Issued"
     if created==False:
             count_item=obj.count
-    if count_item==1 :
-            issued_item=obj.itemu
-    elif count_item==0:
-            issued_item="No items Issued"
+            if count_item==1:
+                    issued_item=obj.itemu
+            elif count_item==0:
+                    issued_item="No items Issued"
     context={'form':form ,'i':issued_item}
     return render(request , 'account/profile.html',context)
 
@@ -133,16 +133,18 @@ def issue(request):
                 newinv.save()
                 names = request.user.profile.name
                 rolls=request.user.profile.roll
-                entry = issue_item(user=request.user , itemu=inv , count=1)
+                entry = issue_item.objects.get(user=request.user )
+                entry.itemu=inv
+                entry.count=1
                 entry.save()
                 messages.success(request , "Your application has been submitted")
-                send_mail(
+                '''send_mail(
                     'Issue Application',
                     'Following items is requested by user: '+ names +'\n'+'Roll number: '+str(rolls) +' \n' +str(inv)  ,
                     'ssamarth1201@gmail.com',
                     ['samarth.ss121@gmail.com', '2018288@iiitdmj.ac.in'],
                     fail_silently=False,
-                )
+                )'''
             elif(invq==0):
                 messages.warning(request, "Please Check inventory , Item not available")    
     return render(request , 'account/issue1.html',{'options':options})

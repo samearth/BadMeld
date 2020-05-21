@@ -28,5 +28,5 @@ urlpatterns = [
     path('updatei',views.update_inventory, name="updatei"),
     path('issue1/',views.issue , name="issue1"),
     path('complaints/',views.complaints , name="complaints"),
-    path('blog/',views.blog , name="blog"),
+    path('blog/', views.blog , name="blog"),
 ]
