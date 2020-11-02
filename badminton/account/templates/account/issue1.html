@@ -1,26 +1,38 @@
 {% extends "account/base2.html" %}
 
 {% block content %}
+<div class="mx-auto" style="width: 1500px;">
 <h1>
     Issue an Item
 </h1>
-<p>
+<br/>
+
+<p class="text-secondary">
     Select an Item From Below to Issue
 </p>
+<h3 class="text-danger"> Alert </h3>
+<p class="text-danger">
+    <ul>
+    <li class="text-danger">Note that only one item can be issued at a time by a member.<br/></li>
+    <li class="text-danger">And the item has to be returned to the club within 15 days in a fine condition or member could be penalised.</li>
+</ul>
+</p>
+
 <form  method="POST" action="" enctype='multipart/form-data'>
     {% csrf_token %}
     {% for f in options.Nums %}
-    <br/><br/> 
+    <br/><br/>
             {{f}}
     {% endfor %}
     <br/><br/>
-  <input type="submit" class="btn btn-outline-secondary btn-lg" name="submit">
+  <input type="submit" class="btn btn-outline-success btn-lg" name="submit">
 </form>
 <div class="mx-auto"  style="width: 500px; size: 100px">
     {% for m in messages %}
-    <h3 class="text-md-center text-{{m.tags}}" size="50"> {{m}}</h3> 
+    <h3 class="text-md-center text-{{m.tags}}" size="50"> {{m}}</h3>
     {% endfor %}
 </div>
 <hr>
 <hr>
+</div>
 {% endblock %}
