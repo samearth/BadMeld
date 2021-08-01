@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h1> Site Your Complaints Here </h1>
+<h1>Pour Your thoughts Here !!</h1>
 <br/>
 <br/>
 <form  method="POST" action="" enctype='multipart/form-data'>
     {% csrf_token %}
-    {{form.as_p}}
+    {{form.Complaint}}
   <input type="submit" class="btn btn-outline-secondary btn-lg" name="submit">
 </form>
 

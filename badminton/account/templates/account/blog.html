@@ -5,10 +5,10 @@
 <h1> Recent </h1>
 {% for m in posts %}
     <div class="jumbotron w-100 p-2 mx-4">
-        <h4 class="display-14">Complaints</h4>
+        <h4 class="display-10">{{m.user}} is saying</h4>
         <p class="lead">{{m.comp}}</p>
         <hr class="my-2">
-        <h6>User : {{m.user}}</h6>
+        <h6>Posted at : {{m.time}}</h6>
         
     </div>
     

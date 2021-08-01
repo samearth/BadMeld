@@ -1,0 +1,48 @@
+{% extends "account/base2.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+<br>
+<br>
+<div class="text-center">
+<h1 class='text-center'>Our Shop</h1>
+<h4>Sell Your Product?</h4>
+<a role="button" href="/sell/" class="btn btn-primary">Sell Now</a>
+</div>
+<br/>
+<h3 class='text-center'>List of all products available to be Sold</h3>
+<br><p class='text-center'>*You can filter out the product or your city!</p>
+<table id="producttable" class="table table-striped" style="width:100%">
+  <thead>
+      <tr>
+          <th>Product Name</th>
+          <th>Type</th>
+          <th>Owner</th>
+          <th>OwnerContact</th>
+          <th>Age(in months)</th>
+          <th>City</th>
+          <th>Condition</th>
+          <th>Price</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for product in allproducts %}
+      <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.product_type}}</td>
+          <td>{{product.seller}}</td>
+          <td>{{product.seller_contact}}</td>
+          <td>{{product.months_old}}</td>
+          <td>{{product.city}}</td>
+          <td>{{product.condition}}</td>
+          <td>{{product.price}}</td>
+         
+      </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

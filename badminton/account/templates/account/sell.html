@@ -1,0 +1,36 @@
+{% extends "account/base2.html" %}
+{% load static %}
+{% block content %}
+
+<!-- <form method="POST" action="">
+  {% csrf_token %}
+  {{form.as_p}}
+  {{messages}}
+  <input type="submit" class="btn btn-outline-secondary btn-lg" name="add" value="Add">
+</form> -->
+<br>
+<br>
+<h2> Share Your badminton equipments with the community</h2>
+<br>
+<br>
+<form method="POST" action="">
+
+  {% csrf_token %}
+   {% for o in form %}
+  <div  style="width: 450px;">
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-7 col-form-label">{{o.label}}</label>
+          <div class="col-sm-1">
+            {{o}}
+          </div>
+        </div>
+      </div>
+  {% endfor %}
+</div>
+<div class="mx-auto">
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" style="width: 450px;" class="text-center btn btn-outline-success btn-lg btn-block" role="button" name="Register to sell your product" value="Register to sell your product"></p>
+</div>
+</form>
+
+
+{% endblock %}

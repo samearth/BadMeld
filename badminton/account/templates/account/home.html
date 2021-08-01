@@ -2,116 +2,287 @@
 {% load static %}
         {% block content %}
         <style>
-            .hello-msg{
-                font-size: 50px;
-                margin-right: 20px;
+            /* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
 
-            }
+body {
+  color: #1f1d1d;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 1rem;
+  z-index: 20;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
         </style>
-        <h1><center>Welcome to IIITDM Jabalpur Badminton Club</h1></center>
-        <span class="hello-msg"> Hello,{{request.user}}</span><br/>
-        <div class="container-fluid">
-        <div class="col-sm-6 container-fluid bg-white rounded" style="min-height: 10vh">
-        <div id="carouselExampleIndicators" class="carousel slide rounded" data-ride="carousel">
+        <!doctype html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <meta name="description" content="">
+
+            <meta name="generator" content="Jekyll v4.0.1">
+            <title>BadMeldinton </title>
+
+            <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+
+            <!-- Bootstrap core CSS -->
+        <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+            <style>
+              .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+              }
+
+              @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                  font-size: 3.5rem;
+                }
+              }
+            </style>
+            <!-- Custom styles for this template -->
+            <link href="carousel.css" rel="stylesheet">
+          </head>
+          <body>
+        <main role="main">
+
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
-            <div class="carousel-inner" style="min-height: 50vh;">
+            <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="data:image/jpeg;base64,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"  height="400" width="700" alt="hii">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/61J0nQGLXPL._SL1100_.jpg" class="d-block w-100" alt="..">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                  <div class="carousel-caption text-left">
+                    <div class="container">
+                        <div class="carousel-caption">
+                          <h1 class="text-warning">BadMeldinton</h1>
+                          <p class="tagline text-warning">SPORTS <br/> THRILL<br/> PASSION<br/></p>
+                          <span class="info text-warning">Come , Drop In</span><br/>
+                          <p><a class="btn btn-lg btn-outline-warning" href="/about/" role="button">Learn more</a></p>
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
               </div>
               <div class="carousel-item">
-                <img src="data:image/jpeg;base64,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" class="d-block w-10" height="400" width="700" alt="...">
+                <img src="https://i.pinimg.com/originals/55/b4/d8/55b4d8f69d9d04c98c178ac31906644e.jpg" class="d-block w-100" alt="..">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                  <div class="carousel-caption">
+                    <h1 class="text-warning">Welcome</h1>
+                    <p class="tagline text-warning"><br/></p>
+				    <span class="info text-warning">Let, your racket embark</span><br/>
+                  </div>
+                </div>
               </div>
               <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1559309106-ed14040fd35d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80" class="d-block w-10" height="400" width="700" alt="...">
+                <img src="https://live.staticflickr.com/406/19116195209_0b86193a4f_b.jpg" class="d-block w-100" alt="..">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                  <div class="carousel-caption text-right">
+                    <h1></h1>
+
+                  </div>
+                </div>
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
-        
-       
           </div>
-        </div>
-        </div>
-        <div class="row">
-            <div class="text-box col-md-offset-1 col-md-10">
-                <center><h2>About the Club</h2></center>
-            <center><p> We are the Badminton family of IIITDM Jabalpur. We Play , live and Grow.</p></center>
+
+        <h1><center>Hey {{request.user}} , Welcome to Our Community</center></h1><br>
+        <br>
+
+        <hr class="featurette-divider bg-warning">
+          <!-- Marketing messaging and featurettes
+          ================================================== -->
+          <!-- Wrap the rest of the page in another container to center all the content. -->
+
+          <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+              <div class="col-lg-4">
+                <img src="https://cdn2.iconfinder.com/data/icons/project-management-5-1/48/207-512.png" class="rounded-circle" width="140" height="140" alt="..">
+                <h2>Established 2020</h2><br>
+                <ul>
+                    <li>100+ Members</li>
+                    <li>2 Active teams</li>
+                  </ul>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQci09HsoisdSueBWi1tHZYK3jVqOOAIgjhK1pjCEfEjRHinY1T&usqp=CAU" class="rounded-circle" width="140" height="140" alt="..">
+                <h2></h2>
+                <h2>Awards And Acheivements</h2><br>
+                <ul>
+                    <li>5 Inter IIIT Awards</li>
+                    <li>2 Times Gusto Winner</li>
+                  </ul>                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img src="https://thumbs.dreamstime.com/b/shuttle-cock-badminton-yellow-background-put-summer-sport-shuttle-cock-badminton-yellow-background-147930264.jpg" class="rounded-circle" width="140" height="140" alt="..">
+                <h2>Reach</h2>
+                <ul>
+                <li>Members From around 20+ cities</li>
+                <li>Most Active Badminton Community Out there</li>
+                </ul>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider bg-warning">
+
+            <div class="row featurette">
+              <div class="col-md-7">
+                <h2 class="featurette-heading">Playing in Arena<br><span class="text-muted">Come, have a look</span></h2>
+                <p class="lead"></p>
+              </div>
+              <div class="col-md-5">
+                <img src="https://5.imimg.com/data5/NB/CQ/DI/SELLER-3819136/badminton-court-wooden-flooring-500x500.jpg" class="rounded" width="500" height="500" alt="..">
+              </div>
             </div>
-        </div>
 
-        <a href="{% url 'logouts' %}" class="btn btn-primary btn-lg " role="button"> Logout </a>
-        <a href="{% url 'profile' %}" class="btn btn-primary btn-lg " role="button"> Profile </a>
-        
-       
+            <hr class="featurette-divider bg-warning">
 
-        <div class="visual-area">
-			<div class="container">
-				<h2>STATS</h2>
-				<div class="pricing-tables">
-					<div class="plan">
-		                <div class="head">
-		                    <h3>ESTD.</h3>
-		                </div>
-		                <div class="price">
-		                    <span class="price-main"><span class="symbol"></span>2011</span>
-		                    
-		                </div>
-		                <ul class="item-list">
-		                    <li>Establishment year 2011.</li>
-		                </ul>
-		               
-		            </div>
-		            <div class="plan">
-		                <div class="head">
-		                    <h3>Members</h3> </div>
-		                <div class="price">
-		                    <span class="price-main"><span class="symbol"></span>100+</span>
-		                    
-		                </div>
-		                    <ul class="item-list">
-		                       <li>100+ Current Members</li>
-		                      
-		                    </ul>
-		                
-		            </div>
-		            <div class="plan recommended">
-		                <div class="head">
-		                    <h3>Achievements</h3> </div>
-		                <div class="price">
-		                    <span class="price-main"><span class="symbol">4</span></span>
-		                   
-		                </div>
-		                    <ul class="item-list">
-		                        <li>2 Gusto And</li>
-		                        <li>2 Inter IIIT Awards</li>
-		                    </ul>
-		                
-		            </div>
-		            <div class="plan">
-		                <div class="head">
-		                    <h3>Amenities</h3> </div>
-		                <div class="price">
-		                    <span class="price-main"><span class="symbol"></span>3</span>
-		                  
-		                </div>
-		                <ul class="item-list">
-		                    <li>3 Fully functional Courts</li>
-		                    
-		                </ul>
-		               
-		            </div>
-				</div>
- 			</div>
-        </div>
-    
+            <div class="row featurette">
+              <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Training<br> <span class="text-muted">See for yourself.</span></h2>
+                <p class="lead"></p>
+              </div>
+              <div class="col-md-5 order-md-1">
+                <img src="https://www.poonaclubltd.com/wp-content/uploads/2017/04/PC_016.jpg" class="rounded" width="400" height="400" alt="..">
+              </div>
+            </div>
+
+            <hr class="featurette-divider bg-warning">
+
+            <div class="row featurette">
+              <div class="col-md-7">
+                <h2 class="featurette-heading">Learn and grow <span class="text-muted">Checkmate your opponent</span></h2>
+                <p class="lead"></p>
+              </div>
+              <div class="col-md-5">
+                <img src="https://media.istockphoto.com/photos/asian-badminton-player-is-hitting-in-court-picture-id1094297362?k=6&m=1094297362&s=170667a&w=0&h=sewWmroJHn6lrSVYr4Lm8IVNC6Tq-rb6nnAEUOVtEbU=" class="rounded" width="500" height="500" alt="..">
+              </div>
+            </div>
+
+            <hr class="featurette-divider">
+            <button type="button" class="btn btn-ins"><i class="fab fa-instagram"></i></button>
+            <!-- /END THE FEATURETTES -->
+
+          </div><!-- /.container -->
+
+
+          <footer  class="footer w-auto h-10">
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; Bad-Meldinton - Sports Community &middot; <a href="#"></a> &middot; <a href="#">Born In India</a></p>
+            <a href="#" class="fa fa-facebook h-5"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-youtube"></a>
+            </footer>
+
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+              <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script></body>
+        </html>
+
         {% endblock %}

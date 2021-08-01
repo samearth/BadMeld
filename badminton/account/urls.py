@@ -29,4 +29,7 @@ urlpatterns = [
     path('issue1/',views.issue , name="issue1"),
     path('complaints/',views.complaints , name="complaints"),
     path('blog/', views.blog , name="blog"),
+    path('current-data/' , views.scraped , name="current_data"),
+    path('sell/' , views.sell , name="sell"),
+    path('shop/' , views.shop , name = "shop")
 ]

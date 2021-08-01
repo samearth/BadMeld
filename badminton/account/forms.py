@@ -7,13 +7,18 @@ from .models import *
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['id','username' , 'email' , 'password1' , 'password2']
+        fields = ['id','username' ,'password1' , 'password2']
 
 
 class profileform(ModelForm):
     class Meta:
         model= profile
-        fields = ['id','name' , 'roll' , 'phone']
+        fields = ['id','name' , 'pincode','phone']
+
+class sellForm(ModelForm):
+    class Meta:
+        model = product
+        fields = ['name' , 'product_type' , 'months_old' , 'city' , 'price' , 'condition']
 
 class inventoryform(ModelForm):
     class Meta:

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, profileform, inventoryform , issueform , complaint_form
+from .forms import CreateUserForm, profileform, inventoryform , issueform , complaint_form , sellForm
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate,logout
@@ -8,11 +8,13 @@ from django.contrib.auth.decorators import login_required
 from .models import profile as userProfile
 from .models import *
 from django.core.mail import send_mail
+from . import scraping
 
 # Create your views here.
 
 def index(request):
     return render(request,'account/index.html')
+
 
 
 def register(request):
@@ -84,8 +86,38 @@ def profile(request):
                     issued_item=obj.itemu
             elif count_item==0:
                     issued_item="No items Issued"
+    print(str(prof))
     context={'form':form ,'i':issued_item}
     return render(request , 'account/profile.html',context)
+
+def sell(request):
+    form = sellForm()
+    messages = ""
+    if request.method == "POST":
+        formInstance = sellForm(request.POST)
+        print(formInstance)
+        if formInstance.is_valid():
+            inventory_item = inventory.objects.get(item=formInstance.cleaned_data['product_type'])
+            inventory_item.quantity = inventory_item.quantity+1
+            inventory_item.save()
+            newproduct = formInstance.save(commit=False)
+            newproduct.seller = request.user
+            newproduct.save()
+            messages = "Successfully added to the Shop!!"
+        else:
+            print('error')
+    context = {
+        'form' : form,
+        'messages' : messages
+    }
+    return render(request , 'account/sell.html' , context)
+
+def shop(request):
+    allproducts = product.objects.all()
+    context = {
+        'allproducts' : allproducts
+    }
+    return render(request , 'account/shop.html' , context)
 
 
 def about(request):
@@ -99,7 +131,7 @@ def add_inventory(request):
         inven = inventory(item=item,quantity=quantity )
         inven.save()
     invent = inventory.objects.all()
-    context = {"invent":invent }
+    context = {"invent":invent , "isadmin" : request.user.is_staff}
     return render(request , 'account/issue.html',context)
 
 def update_inventory(request):
@@ -142,7 +174,7 @@ def issue(request):
                     'Issue Application',
                     'Following items is requested by user: '+ names +'\n'+'Roll number: '+str(rolls) +' \n' +str(inv)  ,
                     'ssamarth1201@gmail.com',
-                    ['samarth.ss121@gmail.com', '2018288@iiitdmj.ac.in'],
+                    ['samarth.ss121@gmail.com'],
                     fail_silently=False,
                 )'''
             elif(invq==0):
@@ -169,3 +201,14 @@ def blog(request):
         'posts' : complaints_posted.objects.all()
     }
     return render(request , "account/blog.html" , context)
+
+def scraped(request):
+    ms = scraping.rankings('men-singles' , '2021' , '30' , '25')
+    ws = scraping.rankings('women-singles' , '2021' , '30' , '25')
+    context = {
+        'ms':ms,
+        'ws':ws
+    }
+    return render(request , 'account/current_data.html' , context)
+
+

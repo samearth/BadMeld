@@ -1,32 +1,53 @@
 {% extends "account/base2.html" %}
 
 {% block content %}
+<div class="text-center" style="width: 450;">
+  <br>
+<h2>
+   INVENTORY of the community
+</h2><br/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+<table id="int" class="table table-striped" style="width:100%">
+  <thead>
+      <tr>
+          <th>Product Type</th>
+          <th>Number of Products registered to sell</th>
 
-<p>
-    INVENTORY
-</p>
-<style>
-table, th, td {
-    border: 1px solid black;
-  }
-</style>
-<div class="row">
-    <div class="col-sm-4 border dark"><b>Item</b></div>
-    <div class="col-sm-4 border dark"><b>Quantity</b></div></span>
-</div>
-{% for m in invent %}
-<div class="row">
-  <div class="col-sm-4 border">{{m.item}}</div>
-  <div class="col-sm-4 border">{{m.quantity}}</div>
-</div>
-{% endfor %}
+      </tr>
+  </thead>
+  <tbody>
+    {% for m in invent %}
+      <tr>
+          <td>{{m.item}}</td>
+          <td>{{m.quantity}}</td>
+      </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<hr class="bg-warning">
+<h3>Update an Item</h3>
 <br/>
-<br/>
-<b>Add an Item</b>
+{% if isadmin %}
 <form method = "POST" action="">
-    {% csrf_token %}
-    Item : <input type="text" name="item">
+  {% csrf_token %}
+    <select class="dropdown mx-auto " id="item" name="item">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+      <option class="dropdown-item" value="Racket">Racket</option>
+      <option class="dropdown-item" value="Shoes">Shoes</option>
+      <option class="dropdown-item" value="Net">Net</option>
+      <option class="dropdown-item" value="Grips">Grips</option>
+      <option class="dropdown-item" value="Racket Strings">Strings</option>
+      <option class="dropdown-item" value="Shuttle">Shuttle</option>
+    </select>
     Quantity: <input type="text" name="quantity"><br/></br>
     <input type="submit" class="btn btn-outline-secondary btn-lg" name="add" value="Add">
-</form>
+</form></div>
+{% else %}
+<p>Only admin can Update the equipments donated to community. Please Register the product at our shop portal or Mail us at badminton@test.com to Donate</p>
+{% endif %}
+
 {% endblock %}
